@@ -49,7 +49,7 @@ tinymce.PluginManager.add('btnTemplatePartShortcodeMenu', function( editor, url 
 
 	editor.addButton( 'btnTemplatePartShortcodeMenu', {
 		type: 'menubutton',
-		text: 'テンプレートコード',
+		text: templatePartShortcodeEditor.editor.menuName,
 		tooltip: templatePartShortcodeEditor.editor.menuTooltip,
 		menu: items
 	} );

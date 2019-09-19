@@ -1,8 +1,7 @@
 <?php
 /**
  * Plugin Name:     Template Part Shortcode
- * Plugin URI:      PLUGIN SITE HERE
- * Description:     テーマで用意したテンプレートのショートコードをリッチテキストエディタに追加するプラグイン
+ * Description:     Enables template shortcode in TinyMCE, the visual editor in WordPress.
  * Author:          akira kurozumi
  * Author URI:      https://a-zumi.net
  * Text Domain:     template-part-shortcode
@@ -11,6 +10,11 @@
  *
  * @package         Template_Part_Shortcode
  */
+
+add_action( 'plugins_loaded', function(){
+	load_plugin_textdomain( 'template-part-shortcode', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+});
 
 class TemplatePartShortcodeTinyMCE {
 	public function __construct() {
@@ -59,8 +63,8 @@ class TemplatePartShortcodeTinyMCE {
 			'nonce'      => wp_create_nonce( 'tempalte-part-shortcord-editor-nonce' ),
 			'shortcodes' => $this->get_shortcodes(),
 			'editor'     => [
-				'menuTooltip' => __( 'Shortcodes' ),
-				'menuName'    => __( 'Shortcodes' ),
+				'menuTooltip' => __( 'Templatecodes', 'template-part-shortcode' ),
+				'menuName'    => __( 'Templatecodes', 'template-part-shortcode' ),
 			]
 		] );
 	}
