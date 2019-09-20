@@ -17,7 +17,12 @@ if ($shortcodes) {
             "name" => ""
         ], $atts);
         if(!empty($atts["name"])) {
-            return get_template_part("template-parts/shortcode/".$atts["name"]);
+        	ob_start();
+            get_template_part("template-parts/shortcode/".$atts["name"]);
+        	$template = ob_get_contents();
+        	ob_end_clean();
+
+        	return $template;
         }
     });
 }
